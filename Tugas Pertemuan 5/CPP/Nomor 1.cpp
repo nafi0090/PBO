@@ -6,81 +6,65 @@ using namespace std;
 class account{
 public:
     // Informasi
-    int posgnj;
-    int neggnj;
-    int posgnp;
-    int neggnp;
+    int bilangan;
 
     //member function
-    int getposgnj ( void );
-    int getneggnj ( void );
-    int getposgnp ( void );
-    int getneggnp ( void );
+    int getbilangan ( void );
 
     //constructor
-    account (int inputposgnj, int inputneggnj, int inputposgnp, int inputneggnp){
-        account::posgnj = inputposgnj;
-        account::neggnj = inputneggnj;
-        account::posgnp = inputposgnp;
-        account::neggnp = inputneggnp;
+    account (int inputbilangan){
+        account::bilangan = inputbilangan;
+
     }
 };
 
 //deskripsi functionnya
-int account::getposgnj ( void ) {
-    return posgnj;
-}
-
-int account::getneggnj ( void ) {
-    return neggnj;
-}
-
-int account::getposgnp ( void ){
-    return posgnp;
-}
-
-int account::getneggnp ( void ){
-    return neggnp;
+int account::getbilangan ( void ) {
+    return bilangan;
 }
 
 //main program
 int main(){
+    char lagi, ulang;
 
-    account account1 = account ( 3, -3, 4, 7);
-    if ( account1.posgnj % 2 != 0){
-        cout << " Nilai nya adalah Positip ganjil " << endl;
-    }
-    else {
-        cout << " Nilainya bukan positip ganjil " << endl;
-    }
-    if (account1.neggnj % 2 <= 0){
-        if (account1.neggnj % 2 < 0 ){
-            cout << " Nilainya adalah negatip ganjil" << endl;
+    lagi='y';
+    while(lagi=='y'){
+
+        int b;
+
+        cout << " Masukan Nilai : ";
+        cin >> b;
+
+        account account1 = account ( b );
+        if ( account1.getbilangan() % 2 == 0){
+                if ( account1.getbilangan() > 0){
+                    cout << " Nilainya adalah genap " << endl;
+                }
+                else
+                    cout << " Nilainya adalah negatif genap " << endl;
         }
         else {
-            cout << " nilainya adalah bukan negatif ganjil" << endl;
+                if ( account1.getbilangan() > 0){
+                    cout << " Nilainya adalah ganjil " << endl;
+                }
+                else
+                    cout << " Nilainya adalah negatif ganjil " << endl;
         }
-    }
-    else{
-        cout << " nilainya adalah bukan negatip ganjil" << endl;
-    }
-    if (account1.posgnp % 2 == 0){
-        cout << " Nilainya adalah Positip Genap" << endl;
-    }
-    else {
-        cout << " Nilainya adalah bukan Positip Genap " << endl;
-    }
-    if (account1.neggnp % 2 == 0){
-        if (account1.neggnj % 2 < 0 ){
-            cout << " Nilainya adalah bukan negatip genap" << endl;
-        }
-        else {
-            cout << " nilainya adalah negatif genap" << endl;
-        }
-    }
-    else {
-        cout << " Nilainya adlaha Bukan Negatif Genap" << endl;
-    }
 
-    return 0;
+        do{
+            cout<<endl<<"Apakah anda ingin coba lagi? Y/T ";
+            cin>>ulang;
+            if(ulang=='T'||ulang=='t'){
+                lagi='t';
+            }
+            else if(ulang=='Y'||ulang=='y'){
+            }
+            else{
+                cout<<"Pilihan yang anda masukkan salah";
+            }
+        }
+        while(ulang!='y'&&ulang!='Y'&&ulang!='t'&&ulang!='T');
+
+        cout << endl;
+    }
 }
